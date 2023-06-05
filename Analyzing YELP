@@ -488,12 +488,80 @@ GROUP BY is_open
 Ideas for analysis include: Parsing out keywords and business attributes for sentiment analysis, clustering businesses to find commonalities or anomalies between them, predicting the overall star rating for a business, predicting the number of fans a user will have, and so on. These are just a few examples to get you started, so feel free to be creative and come up with your own problem you want to solve. Provide answers, in-line, to all of the following:
 	
 i. Indicate the type of analysis you chose to do:
-         
+
+I analyzed the YELP dataset for the opening and closing hours of all the businesses for all the categories.
          
 ii. Write 1-2 brief paragraphs on the type of data you will need for your analysis and why you chose that data:
-                           
+
+I have ordered all the businesses found in all the states across YELP dataset according to the ascending order of categories.
+Viewers can view all the businesses under the every category with their reviews, stars, opening hours and closing hours.
                   
 iii. Output of your finished dataset:
          
-         
++-----------------------------------------+-------+-------------+--------------+-------+-------------------------+-------------+--------------+----------------+---------------+-------------+---------------+-------------+
+| name                                    | state | city        | review_count | stars | category                | MondayHours | TuesdayHours | WednesdayHours | ThursdayHours | FridayHours | SaturdayHours | SundayHours |
++-----------------------------------------+-------+-------------+--------------+-------+-------------------------+-------------+--------------+----------------+---------------+-------------+---------------+-------------+
+| Innercity MMA                           | ON    | Toronto     |            3 |   5.0 | Active Life             | 17:00-22:00 | 18:00-22:00  | 17:00-22:00    | 18:00-22:00   | 17:00-22:00 |          None |        None |
+| Lifestyles Fitness Personal Training    | AZ    | Tempe       |           17 |   5.0 | Active Life             | 5:00-21:00  | 5:00-21:00   | 5:00-21:00     | 5:00-21:00    | 5:00-21:00  |    5:00-21:00 |        None |
+| The Gym at 99 Sudbury                   | ON    | Toronto     |           14 |   3.0 | Active Life             | 6:00-22:00  | 6:00-22:00   | 6:00-22:00     | 6:00-22:00    | 6:00-21:00  |    8:00-20:00 |  8:00-18:00 |
+| Five Guys                               | AZ    | Phoenix     |           63 |   3.5 | American (New)          | 10:00-22:00 | 10:00-22:00  | 10:00-22:00    | 10:00-22:00   | 10:00-22:00 |   10:00-22:00 | 10:00-22:00 |
+| Charlie D's Catfish & Chicken           | AZ    | Phoenix     |            7 |   4.5 | American (Traditional)  | 11:00-18:00 | 11:00-18:00  | 11:00-18:00    | 11:00-18:00   | 11:00-18:00 |   11:00-18:00 | 13:00-16:00 |
+| Camden Fairview                         | NC    | Charlotte   |            6 |   5.0 | Apartments              | 9:00-18:00  | 9:00-18:00   | 9:00-18:00     | 9:00-18:00    | 9:00-18:00  |   10:00-17:00 | 10:00-17:00 |
+| Taliesin West                           | AZ    | Scottsdale  |          223 |   4.5 | Arts & Entertainment    | 8:30-14:30  | 8:30-17:00   | 8:30-17:00     | 8:30-14:30    | 8:30-20:00  |    8:30-15:00 |  8:30-15:00 |
+| Hi Scores - Blue Diamond                | NV    | Las Vegas   |          105 |   3.5 | Arts & Entertainment    | 0:00-0:00   | 0:00-0:00    | 0:00-0:00      | 0:00-0:00     | 0:00-0:00   |     0:00-0:00 |   0:00-0:00 |
+| Flaming Kitchen                         | ON    | Markham     |           25 |   3.0 | Asian Fusion            | 12:00-23:00 | 12:00-23:00  | 12:00-23:00    | 12:00-23:00   | 12:00-23:00 |   12:00-23:00 | 12:00-23:00 |
+| Race Day Mobile Detailing               | AZ    | Phoenix     |           40 |   5.0 | Auto Detailing          | 7:30-19:30  | 7:30-19:30   | 7:30-19:30     | 7:30-19:30    | 7:30-19:30  |    7:30-19:30 |  7:30-19:30 |
+| Buddy's Muffler & Exhaust               | NC    | Gastonia    |            4 |   5.0 | Auto Repair             | 8:30-17:00  | 8:30-17:00   | 8:30-17:00     | 8:30-17:00    | 8:30-17:00  |    9:00-15:00 |        None |
+| All Storage - Anthem                    | NV    | Henderson   |            3 |   3.5 | Automotive              | 9:00-16:30  | 9:00-16:30   | 9:00-16:30     | 9:00-16:30    | 9:00-16:30  |    9:00-16:30 |        None |
+| Brake Masters                           | AZ    | Peoria      |           22 |   4.0 | Automotive              | 7:30-17:30  | 7:30-17:30   | 7:30-17:30     | 7:30-17:30    | 7:30-17:30  |    7:30-17:30 |        None |
+| C's Restaurant Bakery and Coffee Shop   | WI    | Middleton   |           37 |   4.0 | Bakeries                | 6:00-14:00  | 6:00-14:00   | 6:00-14:00     | 6:00-14:00    | 6:00-14:00  |    6:00-14:00 |  7:00-13:00 |
+| The Wine Mill                           | OH    | Peninsula   |           42 |   4.5 | Bars                    | None        | 15:00-21:00  | 15:00-21:00    | 15:00-21:00   | 15:00-23:00 |   15:00-23:00 | 14:00-18:00 |
+| Brubaker's Pub                          | OH    | Hudson      |            5 |   3.0 | Bars                    | 11:00-2:30  | 11:00-2:30   | 11:00-2:30     | 11:00-2:30    | 11:00-2:30  |    11:00-2:30 |  12:00-2:30 |
+| Halo Brewery                            | ON    | Toronto     |           15 |   4.0 | Bars                    | None        | 15:00-21:00  | 15:00-21:00    | 15:00-21:00   | 15:00-21:00 |   11:00-21:00 | 11:00-21:00 |
+| Restaurant Rosalie                      | QC    | Montréal    |           19 |   3.0 | Bars                    | 11:30-23:00 | 11:30-23:00  | 11:30-23:00    | 11:30-23:00   | 11:30-0:00  |    11:30-0:00 |        None |
+| Snip-its Rocky River                    | OH    | Rocky River |           18 |   2.5 | Beauty & Spas           | 10:00-19:00 | 10:00-19:00  | 10:00-19:00    | 10:00-19:00   | 10:00-19:00 |    9:00-17:30 | 10:00-16:00 |
+| Hilight Essence Hair Studio & Esthetics | ON    | Brampton    |            8 |   3.5 | Beauty & Spas           | None        | 10:00-19:30  | 10:00-19:30    | 10:00-19:30   | 10:00-19:30 |    9:00-18:00 | 11:00-17:00 |
+| Good Gosh Beauty                        | ON    | Toronto     |            6 |   4.5 | Beauty & Spas           | 11:30-18:00 | 11:30-18:00  | None           | None          | None        |   10:00-17:00 |        None |
+| The Cider Mill                          | AZ    | Scottsdale  |           91 |   4.0 | Beer                    | 10:00-18:00 | 10:00-18:00  | 10:00-18:00    | 10:00-20:00   | 10:00-20:00 |   10:00-20:00 | 11:00-16:00 |
+| PRO BIKE+RUN                            | PA    | Pittsburgh  |            8 |   5.0 | Bike Repair/Maintenance | 10:00-20:00 | 10:00-20:00  | 10:00-20:00    | 10:00-20:00   | 10:00-20:00 |   10:00-18:00 | 12:00-17:00 |
+| McDonald's                              | AZ    | Phoenix     |            8 |   2.0 | Burgers                 | 5:00-23:00  | 5:00-23:00   | 5:00-23:00     | 5:00-23:00    | 5:00-0:00   |     5:00-0:00 |  5:00-23:00 |
+| Cabin Fever                             | ON    | Toronto     |           26 |   4.5 | Cafes                   | 16:00-2:00  | 18:00-2:00   | 18:00-2:00     | 18:00-2:00    | 18:00-2:00  |    16:00-2:00 |  16:00-2:00 |
++-----------------------------------------+-------+-------------+--------------+-------+-------------------------+-------------+--------------+----------------+---------------+-------------+---------------+-------------+
+(Output limit exceeded, 25 of 117 total rows shown)
+
 iv. Provide the SQL code you used to create your final dataset:
+
+SELECT 
+    business.name,
+    business.state,
+    business.city,
+    business.review_count,
+    business.stars,
+    category.category,
+    MAX(CASE
+    WHEN hours.hours LIKE '%monday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS MondayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%tuesday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS TuesdayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%Wednesday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS WednesdayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%thursday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS ThursdayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%Friday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS FridayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%saturday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS SaturdayHours,
+    MAX(CASE
+    WHEN hours.hours LIKE '%sunday%' THEN TRIM (hours.hours, '%MondayTuesdayWednesdayThursdayFridaySaturdaySunday|%')
+    END) AS SundayHours
+FROM hours
+INNER JOIN business ON hours.business_id = business.id
+INNER JOIN category ON business.id = category.business_id
+--WHERE category = 'Restaurants'
+GROUP BY business.id
+ORDER BY category ASC
